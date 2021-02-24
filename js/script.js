@@ -62,16 +62,14 @@ function datosHospital(lista) {
 
 	const edad = lista.filter(lista => lista.paciente.edad >= 18);
 	const dieta = lista.filter(lista => lista.paciente.sexo === "H" && lista.dieta === "Diabetes");
-	const totalDiasIngreso = lista.map(lista => lista.diasIngresado).reduce(reducer);
+	const diasIngreso = lista.map(lista => lista.diasIngresado).reduce(reducer);
 	const mediaEdadMujeres = (lista.filter(lista => lista.paciente.sexo === "M").map(lista => lista.paciente.edad).reduce(reducer) / lista.filter(lista => lista.paciente.sexo === "M").length);
-
-	console.log(mediaEdadMujeres);
 
 	return resultados = {
 		nPacientes: lista.length,
 		nMayoresEdad: edad.length,
 		nHombresDiabeticos: dieta.length,
-		totalDiasIngreso,
-		mediaEdadMujeres: ""
+		totalDiasIngreso: diasIngreso,
+		mediaEdadMujeres: mediaEdadMujeres
 	};
 }
